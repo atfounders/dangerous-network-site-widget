@@ -30,15 +30,17 @@ class DangerousNetworkSiteWidget extends WP_Widget {
 		
 		$network_sites = get_blog_list( 0, 'all' );
 		
-		$output .= '<ul>';
+		$output .= '<li id="" class="widget"><h2 class="widgettitle">Network Sites</h2><div class="textwidget"><ul>';
 		
 		foreach( $network_sites as $network_site ) {
 			
-			$output .= '<li>Blog ' . $network_site['blog_id'] . ': ' . $network_site['domain'] . $network_site['path'] . '</li>';
+			$site = 'http://' . $network_site['domain'] . $network_site['path'];
+			
+			$output .= '<li><a href="' . $site . '">' . $network_site['domain'] . $network_site['path'] . '</a></li>';
 			
 		}
 		
-		$output .= '</ul>';
+		$output .= '</ul></div></li>';
 		
 		echo $output;
 		
